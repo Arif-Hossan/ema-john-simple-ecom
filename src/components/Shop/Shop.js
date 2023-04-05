@@ -8,8 +8,12 @@ const Shop = () => {
         .then(res => res.json())
         .then(data => setProducts(data))
     },[]);
+
+    const [cart,setCart]=useState([]);
     const handleAddToCart = (product)=>{
-        console.log(product);
+        // create a copy of cart and push product to the new cart
+        const newCart=[...cart,product];
+        setCart(newCart);
     }
     return (
         <div className='shop-container'>
@@ -24,7 +28,8 @@ const Shop = () => {
             </div>
 
             <div className='cart-container'>
-            <h1>Cart</h1>
+            <h1>Order Summary</h1>
+            <p>Selected Items :{cart.length}</p>
             </div>
         </div>
     );
