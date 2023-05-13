@@ -3,3 +3,12 @@
     top: 0;
     padding: 25px 10px;
 }
+.btn-clear-cart{
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    background: #FF3030;
+    border: none;
+    color: white;
+    padding: 16px;
+}

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb, getShoppingCart } from '../../utilities/fakedb';
-import { useLoaderData } from 'react-router-dom';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
     /*
     //using state and useEffect loading the data
@@ -18,6 +18,10 @@ const Shop = () => {
     const products = useLoaderData();
 
     const [cart,setCart]=useState([]);
+    const clearCart = () =>{
+        setCart([]);
+        deleteShoppingCart();
+    }
     const handleAddToCart = (selectedProduct)=>{
         // create a copy of cart and push product to the new cart
         let newCart = [];
@@ -62,7 +66,12 @@ const Shop = () => {
             </div>
 
             <div className='cart-container'>
-              <Cart cart={cart}></Cart>
+              <Cart
+              cart={cart}
+              clearCart={clearCart}
+              >
+                <Link to='/order'><button>Review Order</button></Link>
+              </Cart>
             </div>
         </div>
     );
